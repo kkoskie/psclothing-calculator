@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS Clothing Price Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #2c003e; /* Dark purple background */
+            color: #ffffff; /* White text */
+        }
+        h1 {
+            color: #d4b3ff; /* Light purple for headings */
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border: 1px solid #d4b3ff; /* Light purple border */
+            background-color: #3d004f; /* Darker purple input background */
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #8000ff; /* Bright purple button */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4d0099; /* Darker purple hover effect */
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #d4b3ff; /* Light purple text for results */
+        }
+    </style>
+</head>
+<body>
+    <h1>PS Clothing Price Calculator</h1>
+    <p>Enter the retail price to find the Parkland Surplus clothing price:</p>
+    <input type="number" id="retailPrice" placeholder="Enter retail price" min="0">
+    <button onclick="getPSPrice()">Calculate</button>
+    <p id="result"></p>
+    <script>
+        // Data from the table you provided
+        const priceRanges = [
+            { range: [10, 13], psPrice: 9 },
+            { range: [14, 17], psPrice: 12 },
+            { range: [18, 21], psPrice: 16 },
+            { range: [22, 25], psPrice: 18 },
+            { range: [26, 29], psPrice: 21 },
+            { range: [30, 33], psPrice: 25 },
+            { range: [34, 36], psPrice: 29 },
+            { range: [37, 42], psPrice: 32 },
+            { range: [43, 48], psPrice: 36 },
+            { range: [49, 54], psPrice: 40 },
+            { range: [55, 64], psPrice: 48 },
+            { range: [65, 74], psPrice: 56 },
+            { range: [75, 84], psPrice: 64 },
+            { range: [85, 94], psPrice: 72 },
+            { range: [95, 104], psPrice: 80 },
+            { range: [105, 120], psPrice: 95 }
+        ];
+
+        function getPSPrice() {
+            const retailPrice = parseFloat(document.getElementById("retailPrice").value);
+            let result = "Price out of range.";
+            for (let i = 0; i < priceRanges.length; i++) {
+                if (retailPrice >= priceRanges[i].range[0] && retailPrice <= priceRanges[i].range[1]) {
+                    result = `Parkland Surplus Price: $${priceRanges[i].psPrice}`;
+                    break;
+                }
+            }
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>
