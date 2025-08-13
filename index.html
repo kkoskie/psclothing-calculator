@@ -82,15 +82,17 @@ button:hover {
             document.getElementById("result").innerText = result;
         }
 
-        // Allow the Enter key to trigger the calculation
+// Allow the Enter key to trigger the calculation
 document.getElementById("retailPrice").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         getPSPrice(); // Call the calculate function
     }
 });
-        // Automatically focus the cursor on the input box when the page loads
+
+// Automatically focus the cursor on the input box when the page loads
 document.getElementById("retailPrice").focus();
-    </script>
-</body>
-</html>
+
+// Automatically update price as user types
+document.getElementById("retailPrice").addEventListener("input", getPSPrice);
+
 
